@@ -1,27 +1,16 @@
 """
 Resume Health Bot
+
 Main Entry Point
 """
 
-from telegram import Update
 from telegram.ext import (
     Application,
     CommandHandler,
-    ContextTypes,
 )
 
 from config import BOT_NAME, BOT_VERSION, BOT_TOKEN
-
-
-async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Start Command"""
-
-    await update.message.reply_text(
-        f"🤖 {BOT_NAME}\n\n"
-        f"Version: {BOT_VERSION}\n\n"
-        "✅ Bot Started Successfully.\n"
-        "Welcome to Resume Health!"
-    )
+from bot.handlers import start
 
 
 def main():
@@ -29,7 +18,7 @@ def main():
 
     app.add_handler(CommandHandler("start", start))
 
-    print(f"{BOT_NAME} v{BOT_VERSION} Started")
+    print(f"{BOT_NAME} v{BOT_VERSION} Started Successfully")
 
     app.run_polling()
 
