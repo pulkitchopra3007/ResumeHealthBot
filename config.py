@@ -1,24 +1,41 @@
 """
 Resume Health Bot Configuration
+--------------------------------
+This file stores project-wide configuration values.
 
-This file stores all project settings.
+Author: Resume Health Team
+Version: 1.0.0
 """
 
-# Telegram Bot Token
-BOT_TOKEN = ""
+# =========================
+# BOT CONFIGURATION
+# =========================
 
-# Bot Information
-BOT_NAME = "Resume Health Bot"
+BOT_NAME = "Resume Health"
 BOT_VERSION = "1.0.0"
 
-# Supported File Types
-SUPPORTED_FILES = [
+# Development Token
+# NOTE:
+# Replace with a new token before production.
+BOT_TOKEN = "PASTE_YOUR_TOKEN_HERE"
+
+# =========================
+# SUPPORTED FILES
+# =========================
+
+SUPPORTED_FILE_TYPES = (
     ".pdf",
-    ".docx"
-]
+    ".docx",
+)
 
-# Maximum Resume Size (10 MB)
-MAX_FILE_SIZE = 10 * 1024 * 1024
+# =========================
+# FILE LIMITS
+# =========================
 
-# Default Resume Score
+MAX_FILE_SIZE_MB = 10
+
+# =========================
+# DEFAULT SETTINGS
+# =========================
+
 DEFAULT_SCORE = 100
