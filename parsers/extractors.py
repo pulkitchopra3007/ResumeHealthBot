@@ -30,6 +30,47 @@ class PhoneExtractor:
         return match.group() if match else "Not Found"
 
 
+class NameExtractor:
+
+    @staticmethod
+    def extract(text):
+
+        lines = [line.strip() for line in text.split("\n") if line.strip()]
+
+        blacklist = {
+            "resume",
+            "curriculum vitae",
+            "education",
+            "experience",
+            "skills",
+            "projects",
+            "contact",
+            "summary",
+            "certifications",
+            "achievements",
+        }
+
+        for line in lines[:10]:
+
+            lower = line.lower()
+
+            if lower in blacklist:
+                continue
+
+            if "@" in line:
+                continue
+
+            if any(ch.isdigit() for ch in line):
+                continue
+
+            words = line.split()
+
+            if 2 <= len(words) <= 4:
+                return line.title()
+
+        return "Not Found"
+
+
 class SkillExtractor:
 
     DATABASE = Path("database/skills.txt")
