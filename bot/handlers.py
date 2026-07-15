@@ -4,6 +4,7 @@ Bot Handlers
 
 from telegram import Update
 from telegram.ext import ContextTypes
+from utils.file_manager import save_resume
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -13,6 +14,8 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
         "🤖 Welcome to Resume Health Bot!\n\n"
         "📄 Send me your resume in PDF format to begin analysis."
     )
+
+
 async def receive_resume(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Receive resume PDF."""
 
@@ -27,6 +30,9 @@ async def receive_resume(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
+    file_path = await save_resume(document)
+
     await update.message.reply_text(
-        f"✅ Resume received!\n\nFilename: {document.file_name}"
+        f"✅ Resume received!\n\n"
+        f"Saved to:\n{file_path}"
     )
