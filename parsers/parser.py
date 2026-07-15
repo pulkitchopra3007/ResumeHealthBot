@@ -2,7 +2,10 @@
 Resume Parser
 """
 
+from core.resume import Resume
+
 from parsers.extractors import (
+    NameExtractor,
     EmailExtractor,
     PhoneExtractor,
     SkillExtractor,
@@ -16,14 +19,13 @@ class ResumeParser:
 
     def parse(self):
 
-        return {
-            "name": None,
-            "email": EmailExtractor.extract(self.text),
-            "phone": PhoneExtractor.extract(self.text),
-            "skills": SkillExtractor.extract(self.text),
-            "education": [],
-            "experience": [],
-            "projects": [],
-            "certifications": [],
-            "links": [],
-        }
+        resume = Resume()
+
+        resume.raw_text = self.text
+
+        resume.name = NameExtractor.extract(self.text)
+        resume.email = EmailExtractor.extract(self.text)
+        resume.phone = PhoneExtractor.extract(self.text)
+        resume.skills = SkillExtractor.extract(self.text)
+
+        return resume
