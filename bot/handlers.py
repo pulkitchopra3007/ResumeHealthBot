@@ -32,18 +32,16 @@ async def receive_resume(update: Update, context: ContextTypes.DEFAULT_TYPE):
         )
         return
 
-    # Save PDF
+    # Save Resume
     file_path = await save_resume(document)
 
-    # Extract text from PDF
+    # Extract Text
     text = extract_text(file_path)
 
-    # Print extracted text in Termux
-    print("\n===== EXTRACTED TEXT =====\n")
-    print(text)
-    print("\n==========================\n")
+    # Show first 1000 characters
+    preview = text[:1000]
 
     await update.message.reply_text(
         f"✅ Resume received!\n\n"
-        f"Saved to:\n{file_path}"
+        f"📄 Text Preview:\n\n{preview}"
     )
