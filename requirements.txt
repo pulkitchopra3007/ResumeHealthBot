@@ -1,1 +1,3 @@
-faaah
+python-telegram-bot
+PyMuPDF
+python-docx
