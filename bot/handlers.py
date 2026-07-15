@@ -41,13 +41,28 @@ async def receive_resume(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     # Parse Resume
     parser = ResumeParser(text)
-    email = parser.get_email()
+    resume = parser.parse()
 
     # Reply
     await update.message.reply_text(
         f"""✅ Resume Parsed
 
+👤 Name:
+{resume['name']}
+
 📧 Email:
-{email}
+{resume['email']}
+
+📞 Phone:
+{resume['phone']}
+
+🛠 Skills:
+{", ".join(resume['skills']) if resume['skills'] else "Not Found"}
+
+🎓 Education:
+{", ".join(resume['education']) if resume['education'] else "Not Found"}
+
+💼 Experience:
+{", ".join(resume['experience']) if resume['experience'] else "Not Found"}
 """
     )
