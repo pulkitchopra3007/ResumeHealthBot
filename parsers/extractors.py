@@ -95,3 +95,24 @@ class SkillExtractor:
                     found.append(skill)
 
         return sorted(set(found))
+class LinkExtractor:
+
+    @staticmethod
+    def extract(text):
+
+        import re
+
+        pattern = r"(https?://[^\s]+|www\.[^\s]+|linkedin\.com/[^\s]+|github\.com/[^\s]+)"
+
+        links = re.findall(pattern, text, flags=re.IGNORECASE)
+
+        cleaned = []
+
+        for link in links:
+
+            link = link.strip(".,;()[]")
+
+            if link not in cleaned:
+                cleaned.append(link)
+
+        return cleaned
