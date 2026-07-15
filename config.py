@@ -17,7 +17,7 @@ BOT_VERSION = "1.0.0"
 # Development Token
 # NOTE:
 # Replace with a new token before production.
-BOT_TOKEN = "PASTE_YOUR_TOKEN_HERE"
+BOT_TOKEN = "8510673402:AAHakKSMz9W_pYg9pdZAhs3wjlIeWU1QaM0"
 
 # =========================
 # SUPPORTED FILES
