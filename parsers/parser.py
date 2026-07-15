@@ -16,6 +16,13 @@ class ResumeParser:
     def parse(self):
 
         return {
+            "name": None,
             "email": EmailExtractor.extract(self.text),
             "phone": PhoneExtractor.extract(self.text),
+            "skills": [],
+            "education": [],
+            "experience": [],
+            "projects": [],
+            "certifications": [],
+            "links": [],
         }
