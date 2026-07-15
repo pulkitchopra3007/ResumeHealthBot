@@ -48,21 +48,21 @@ async def receive_resume(update: Update, context: ContextTypes.DEFAULT_TYPE):
         f"""✅ Resume Parsed
 
 👤 Name:
-{resume['name']}
+{resume.name}
 
 📧 Email:
-{resume['email']}
+{resume.email}
 
 📞 Phone:
-{resume['phone']}
+{resume.phone}
 
 🛠 Skills:
-{", ".join(resume['skills']) if resume['skills'] else "Not Found"}
+{", ".join(resume.skills) if resume.skills else "Not Found"}
 
 🎓 Education:
-{", ".join(resume['education']) if resume['education'] else "Not Found"}
+{", ".join(resume.education) if resume.education else "Not Found"}
 
 💼 Experience:
-{", ".join(resume['experience']) if resume['experience'] else "Not Found"}
+{", ".join(resume.experience) if resume.experience else "Not Found"}
 """
     )
