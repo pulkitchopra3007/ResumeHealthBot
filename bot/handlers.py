@@ -7,6 +7,7 @@ from telegram.ext import ContextTypes
 
 from utils.file_manager import save_resume
 from utils.pdf_parser import extract_text
+from parsers.parser import ResumeParser
 
 
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
@@ -38,10 +39,15 @@ async def receive_resume(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # Extract Text
     text = extract_text(file_path)
 
-    # Show first 1000 characters
-    preview = text[:1000]
+    # Parse Resume
+    parser = ResumeParser(text)
+    email = parser.get_email()
 
+    # Reply
     await update.message.reply_text(
-        f"✅ Resume received!\n\n"
-        f"📄 Text Preview:\n\n{preview}"
+        f"""✅ Resume Parsed
+
+📧 Email:
+{email}
+"""
     )
