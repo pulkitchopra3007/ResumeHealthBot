@@ -5,12 +5,13 @@ Resume Parser
 from parsers.extractors import (
     EmailExtractor,
     PhoneExtractor,
+    SkillExtractor,
 )
 
 
 class ResumeParser:
 
-    def __init__(self, text: str):
+    def __init__(self, text):
         self.text = text
 
     def parse(self):
@@ -19,7 +20,7 @@ class ResumeParser:
             "name": None,
             "email": EmailExtractor.extract(self.text),
             "phone": PhoneExtractor.extract(self.text),
-            "skills": [],
+            "skills": SkillExtractor.extract(self.text),
             "education": [],
             "experience": [],
             "projects": [],
