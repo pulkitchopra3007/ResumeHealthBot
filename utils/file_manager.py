@@ -1,19 +1,15 @@
-"""
-File Manager
+import os
 
-Responsible for handling resume files.
-"""
+UPLOAD_DIR = "assets/uploads"
 
-from pathlib import Path
+os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 
-class FileManager:
-    """Handles file storage operations."""
+async def save_resume(document):
+    file = await document.get_file()
 
-    def __init__(self):
-        self.upload_folder = Path("assets/uploads")
-        self.upload_folder.mkdir(parents=True, exist_ok=True)
+    file_path = os.path.join(UPLOAD_DIR, document.file_name)
 
-    def get_upload_folder(self):
-        """Return upload folder path."""
-        return self.upload_folder
+    await file.download_to_drive(file_path)
+
+    return file_path
